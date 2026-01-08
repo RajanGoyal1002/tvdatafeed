@@ -15,7 +15,7 @@ If you found the content useful and want to support my work, you can buy me a co
 This module can be installed from github repo
 
 ```sh
-pip install --upgrade --no-cache-dir git+https://github.com/rongardF/tvdatafeed.git
+pip install --upgrade --no-cache-dir git+https://github.com/RajanGoyal1002/tvdatafeed.git
 ```
 
 For usage instructions, watch these videos-
@@ -274,3 +274,4 @@ Before creating an issue in this library, please follow the following steps.
    [Example:](https://docs.github.com/en/github/writing-on-github/creating-and-highlighting-code-blocks)
 
    ![1659809630082](image/README/1659809630082.png)
+
