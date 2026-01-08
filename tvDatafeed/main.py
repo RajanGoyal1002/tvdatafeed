@@ -10,7 +10,7 @@ from websocket import create_connection
 import requests
 import json
 
-logger = logging.getLogger(__name__)
+#logger = logging.getLogger(__name__)
 
 
 class Interval(enum.Enum):
@@ -76,7 +76,8 @@ class TvDatafeed:
                     url=self.__sign_in_url, data=data, headers=self.__signin_headers)
                 token = response.json()['user']['auth_token']
             except Exception as e:
-                logger.error('error while signin')
+                pass
+                #logger.error('error while signin')
                 token = None
 
         return token
@@ -95,7 +96,8 @@ class TvDatafeed:
 
             return found, found2
         except AttributeError:
-            logger.error("error in filter_raw_message")
+            pass
+            #logger.error("error in filter_raw_message")
 
     @staticmethod
     def __generate_session():
@@ -156,7 +158,8 @@ class TvDatafeed:
                     except ValueError:
                         volume_data = False
                         row.append(0.0)
-                        logger.debug('no volume data')
+                        pass
+                        #logger.debug('no volume data')
 
                 data.append(row)
 
@@ -167,7 +170,8 @@ class TvDatafeed:
             data.insert(0, "symbol", value=symbol)
             return data
         except AttributeError:
-            logger.error("no data, please check the exchange and symbol")
+            pass
+            #logger.error("no data, please check the exchange and symbol")
 
     @staticmethod
     def __format_symbol(symbol, exchange, contract: int = None):
@@ -275,13 +279,14 @@ class TvDatafeed:
 
         raw_data = ""
 
-        logger.debug(f"getting data for {symbol}...")
+        #logger.debug(f"getting data for {symbol}...")
         while True:
             try:
                 result = self.ws.recv()
                 raw_data = raw_data + result + "\n"
             except Exception as e:
-                logger.error(e)
+                pass
+                #logger.error(e)
                 break
 
             if "series_completed" in result:
@@ -299,7 +304,8 @@ class TvDatafeed:
             symbols_list = json.loads(resp.text.replace(
                 '</em>', '').replace('<em>', ''))
         except Exception as e:
-            logger.error(e)
+            pass
+            #logger.error(e)
 
         return symbols_list
 
@@ -318,4 +324,5 @@ if __name__ == "__main__":
             extended_session=False,
         )
     )
+
 
